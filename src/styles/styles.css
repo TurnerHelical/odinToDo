@@ -1,4 +1,46 @@
 #titleBar {
     display: grid;
-    grid-template: 1fr / 5fr 1fr;
+    grid-template: 1fr / 1fr;
+    height: 20vh;
+    text-align: center;
+    align-items: center;
+}
+
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    padding: 0 30%;
+}
+
+section {
+    display: grid;
+    grid-template: 1fr / 3fr 1fr;
+    margin-top: 100px;
+    min-height: 500px;
+}
+
+#todoBox {
+    display: grid;
+    grid-template: 1fr 6fr / 1fr;
+    text-align: center;
+    padding: 25px;
+}
+
+#todoLists {
+    display: grid;
+    grid-template: 1fr;
+
+}
+
+#todoCtr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#taskList {
+    padding: 0;
+    list-style: none;
 }
