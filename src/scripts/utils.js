@@ -1,7 +1,10 @@
-function dom() {
-    const findElement = (selector) => document.querySelector(selector);
-    const findAllElements = (selector) => document.querySelectorAll(selector);
-    const createAndAppend = (parent, child, attr, attrVal) => {
+class dom {
+
+     findElement = (selector) => document.querySelector(selector);
+
+     findAllElements = (selector) => document.querySelectorAll(selector);
+
+     createAndAppend = (parent, child, attr, attrVal) => {
         let parentEl = findElement(parent);
         let childEl = document.createElement(child);
         if (attr && attrVal) {
@@ -10,26 +13,29 @@ function dom() {
         parentEl.appendChild(childEl);
         return childEl;
     };
-    const clearContent = (selector) => {
+
+     clearContent = (selector) => {
         let el = findElement(selector);
         el.innerHTML = '';
         console.log('test')
     }
-    const editAttr = (selector, attr) => {
+
+     editAttr = (selector, attr, attrVal) => {
         let el = findElement(selector);
-        el.setAttribute(`${attr}`);
+        el.setAttribute(attr, attrVal);
     }
-    const toggleClass = function (selector, className) {
+
+     toggleClass = function (selector, className) {
         const element = findElement(selector);
         element.classList.toggle(className);
     }
-    const toggleClassForAll = (selector, className) => {
+
+     toggleClassForAll = (selector, className) => {
         const elements = findAllElements(selector);
         elements.forEach(element => {
             element.classList.toggle(className);
         })
-    }
-    return { findElement, createAndAppend, toggleClass, findAllElements, toggleClassForAll, clearContent, editAttr };
+     }
 }
 
 export {dom};

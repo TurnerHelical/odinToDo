@@ -19,19 +19,34 @@ section {
     grid-template: 1fr / 3fr 1fr;
     margin-top: 100px;
     min-height: 500px;
+    padding: 0px 10px;
+    gap: 10px;
 }
 
 #todoBox {
     display: grid;
-    grid-template: 1fr 6fr / 1fr;
+    grid-template: auto auto auto 1fr / 1fr;
     text-align: center;
     padding: 25px;
+    border: 2px black solid;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px gray, -1px -1px 3px gray;
 }
 
 #todoLists {
     display: grid;
-    grid-template: 1fr;
+    grid-template: auto 1fr / 1fr;
+    padding: 25px;
+    gap: 10px;
+    text-align: center;
+    border: 2px black solid;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px gray, -1px -1px 3px gray;
+}
 
+.taskList {
+    border: 1px black solid;
+    padding: 5px 10px;
 }
 
 #todoCtr {
@@ -40,7 +55,23 @@ section {
     align-items: center;
 }
 
-#taskList {
+#tasks{
     padding: 0;
     list-style: none;
+}
+
+
+
+.task {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    border: 1px black solid;
+    padding: 5px 10px;
+}
+
+.finishedTask {
+    background-color: grey;
+    text-decoration: line-through;
 }
