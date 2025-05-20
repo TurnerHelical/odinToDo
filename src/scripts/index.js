@@ -1,7 +1,7 @@
 import '../styles/reset.css'
 import '../styles/styles.css'
-import {dom} from './utils.js'
+import {Dom} from './utils.js'
 
-const utils = new dom;
+const utils = new Dom();
 
 utils.clearContent('body');
