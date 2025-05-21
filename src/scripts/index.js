@@ -8,15 +8,14 @@ const taskListArr = [];
 function createTaskList(title, taskDesc) {
     let myLists = new TaskList(title, taskDesc);
     myLists.addTaskListToPage();
-    taskListArr.push(myLists);
-    return 
+    taskListArr.push(myLists); 
 }
 
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const myTasks1 = createTaskList('test', 'test test')
-    const myTasks = createTaskList('test1', 'Testing Testing Testing')
+    createTaskList('test', 'test test');
+    createTaskList('test1', 'Testing Testing Testing');
     console.log(taskListArr);
 });
