@@ -3,12 +3,20 @@ import '../styles/styles.css'
 import {Dom} from './utils.js'
 import {TaskList, Task} from './tasks.js'
 
+const taskListArr = [];
 
-const utils = new Dom();
+function createTaskList(title, taskDesc) {
+    let myLists = new TaskList(title, taskDesc);
+    myLists.addTaskListToPage();
+    taskListArr.push(myLists);
+    return 
+}
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    const testTask = new TaskList('Test', 'This is a test of the task list generator');
-    testTask.addTaskToTaskList('this is a test task', '12/01');
-    testTask.addTaskListToPage();
-    console.log(testTask);
+    const myTasks1 = createTaskList('test', 'test test')
+    const myTasks = createTaskList('test1', 'Testing Testing Testing')
+    console.log(taskListArr);
 });

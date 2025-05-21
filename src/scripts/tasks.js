@@ -15,8 +15,8 @@ class TaskList {
 
     }
 
-    addTaskToTaskList(taskDesc, dueDate) {
-        let task = Task.createTask(taskDesc, dueDate, this.id);
+    addTaskToTaskList(taskInfo, dueDate) {
+        let task = Task.createTask(taskInfo, dueDate, this.id);
         this.taskArray.push(task);
     }
 
@@ -26,23 +26,25 @@ class TaskList {
         sbTaskList.innerHTML = `${this.title}`;
         let sbTaskDesc = utils.createAndAppend(`.task-${this.id}`, 'p', 'class', 'sbTaskDesc');
         sbTaskDesc.innerHTML = `${this.taskDesc}`;
+    }
 
+    openTaskListInToDoBox(taskListId) {
 
     }
 }
 
 class Task {
 
-    constructor(taskDesc, dueDate, taskListId) {
-        this.taskDesc = taskDesc;
+    constructor(taskInfo, dueDate, taskListId) {
+        this.taskInfo = taskInfo;
         this.dueDate = dueDate;
         this.taskListId = taskListId
         this.id = crypto.randomUUID();
     }
 
-    static createTask(taskDesc, dueDate, taskListId) {
+    static createTask(taskInfo, dueDate, taskListId) {
 
-        return new Task(taskDesc, dueDate, taskListId);
+        return new Task(taskInfo, dueDate, taskListId);
         
     }
 
