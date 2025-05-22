@@ -8,7 +8,7 @@ class TaskList {
         this.title = title;
         this.taskArray = [];
         this.taskDesc = taskDesc;
-        this.id = crypto.randomUUID();
+        this.id = 1;
     }
 
     addTaskListToPage() {
