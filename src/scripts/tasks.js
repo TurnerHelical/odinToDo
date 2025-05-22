@@ -11,15 +11,6 @@ class TaskList {
         this.id = crypto.randomUUID();
     }
 
-    taskListBoxDisplay() {
-
-    }
-
-    addTaskToTaskList(taskInfo, dueDate) {
-        let task = Task.createTask(taskInfo, dueDate, this.id);
-        this.taskArray.push(task);
-    }
-
     addTaskListToPage() {
         utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${this.id}`);
         let sbTaskList = utils.createAndAppend(`.task-${this.id}`, 'h3', 'class', 'sbTaskTitle');
@@ -31,6 +22,7 @@ class TaskList {
     openTaskListInToDoBox(taskListId) {
 
     }
+
 }
 
 class Task {
@@ -42,11 +34,7 @@ class Task {
         this.id = crypto.randomUUID();
     }
 
-    static createTask(taskInfo, dueDate, taskListId) {
 
-        return new Task(taskInfo, dueDate, taskListId);
-        
-    }
 
 }
 
