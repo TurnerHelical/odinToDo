@@ -26,8 +26,10 @@ function domManip() {
         for (const task of list.taskArray) {
             let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
-            utils.createAndAppend(`[data-id='${task.id}']`, 'input', 'type', 'radio');
-            mbTask.textContent = `${task.taskInfo}`;
+            const radio = document.createElement('input');
+            radio.setAttribute('type', 'radio');
+            mbTask.appendChild(radio);
+            mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
         }
         console.log('Added to Main Box:', tl);
     }

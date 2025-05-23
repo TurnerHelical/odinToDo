@@ -5,7 +5,7 @@ class TaskList {
         this.title = title;
         this.taskArray = [];
         this.taskDesc = taskDesc;
-        this.id = 1;
+        this.id = crypto.randomUUID();
     }
 
    
@@ -25,7 +25,7 @@ class Task {
         this.taskInfo = taskInfo;
         this.dueDate = dueDate;
         this.taskListId = taskListId
-        this.id = 2;
+        this.id = crypto.randomUUID();
     }
 
 
