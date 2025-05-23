@@ -2,6 +2,10 @@ class Dom {
 
     findElement = (selector) => document.querySelector(selector);
     findAllElements = (selector) => document.querySelectorAll(selector);
+    findElementByOther = (searchFor) => {
+        let el = document.querySelector(searchFor);
+        return el
+    }
     createAndAppend = (parent, child, attr, attrVal) => {
         let parentEl = this.findElement(parent);
         let childEl = document.createElement(child);

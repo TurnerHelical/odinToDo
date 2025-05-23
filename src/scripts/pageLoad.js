@@ -17,7 +17,18 @@ function domManip() {
     const addTaskListToMainBox = (list) => {
         const tl = utils.createAndAppend('#todoBox', 'div', 'id', `tlMainBox`);
         tl.setAttribute('data-id', list.id);
-        tl.textContent = `Main Box: ${list.title}`;
+        const title = utils.createAndAppend(`#tlMainBox`, 'h3', 'class', 'todoTitle');
+        title.textContent = `${list.title}`;
+        const desc = utils.createAndAppend('#tlMainBox', 'p', 'class', 'todoDesc');
+        desc.textContent = `${list.taskDesc}`;
+        utils.createAndAppend('#tlMainBox', 'div', 'id', 'todoCtr');
+        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks'); 
+        for (const task of list.taskArray) {
+            let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
+            mbTask.setAttribute('data-id', task.id);
+            utils.createAndAppend(`[data-id='${task.id}']`, 'input', 'type', 'radio');
+            mbTask.textContent = `${task.taskInfo}`;
+        }
         console.log('Added to Main Box:', tl);
     }
         return {addTaskListToSb, addTaskListToMainBox}
