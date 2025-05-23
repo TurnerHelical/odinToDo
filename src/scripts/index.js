@@ -1,11 +1,14 @@
 import '../styles/reset.css'
 import '../styles/styles.css'
-import {TaskList, Task} from './tasks.js'
-import { domManip } from './pageLoad.js'
+import {TaskListManager} from './taskListManager.js';
 
-const stuff = domManip();
+const manager = new TaskListManager();
+window.manager = manager;
 
-window.stuff = stuff;
+document.addEventListener('DOMContentLoaded', () => {
+    manager.createTaskList('Test Title', 'Test Description');
+});
+
 
 
 

@@ -1,32 +1,23 @@
 import {Dom} from './utils.js'
-import { Task, TaskList } from './tasks.js';
 
 const utils = new Dom();
 
 function domManip() {
 
-    const taskListArr = []
-
-    const createTaskList = (title, taskDesc) => {
-        let myLists = new TaskList(title, taskDesc);
-        myLists.addTaskListToPage();
-        taskListArr.push(myLists); 
+    
+    const addTaskListToPage = (list) => {
+        utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${list.id}`);
+        let sbTaskList = utils.createAndAppend(`.task-${list.id}`, 'h3', 'class', 'sbTaskTitle');
+        sbTaskList.innerHTML = `${list.title}`;
+        let sbTaskDesc = utils.createAndAppend(`.task-${list.id}`, 'p', 'class', 'sbTaskDesc');
+        sbTaskDesc.innerHTML = `${list.taskDesc}`;
     }
-
-    const createTask = (taskInfo, dueDate, taskListId) => {
-
-        let newTask = new Task(taskInfo, dueDate, taskListId);
-        for (const taskList of taskListArr) {
-            if (taskListId === taskList.id) {
-                taskList.taskArray.push(newTask)
-            } else {
-                return
-            }
-        }
+        return {addTaskListToPage}
+    
         
-    }
+ }
 
-    return {createTaskList, createTask};
-};
+    
+
 
 export {domManip};

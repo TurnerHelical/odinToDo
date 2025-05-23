@@ -1,6 +1,3 @@
-import {Dom} from './utils.js'
-
-const utils = new Dom;
 
 class TaskList {
 
@@ -8,20 +5,17 @@ class TaskList {
         this.title = title;
         this.taskArray = [];
         this.taskDesc = taskDesc;
-        this.id = 1;
+        this.id = crypto.randomUUID();
     }
 
-    addTaskListToPage() {
-        utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${this.id}`);
-        let sbTaskList = utils.createAndAppend(`.task-${this.id}`, 'h3', 'class', 'sbTaskTitle');
-        sbTaskList.innerHTML = `${this.title}`;
-        let sbTaskDesc = utils.createAndAppend(`.task-${this.id}`, 'p', 'class', 'sbTaskDesc');
-        sbTaskDesc.innerHTML = `${this.taskDesc}`;
+   
+
+    addTask(taskInfo, dueDate) {
+        const task = new Task(taskInfo, dueDate, this.id);
+        this.taskArray.push(task);
+        return task;
     }
 
-    openTaskListInToDoBox(taskListId) {
-
-    }
 
 }
 
@@ -39,4 +33,4 @@ class Task {
 }
 
 
-export {TaskList, Task};
+export { TaskList, Task };
