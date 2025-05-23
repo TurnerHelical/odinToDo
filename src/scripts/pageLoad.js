@@ -15,6 +15,7 @@ function domManip() {
     }
 
     const addTaskListToMainBox = (list) => {
+        utils.clearContent('#todoBox');
         const tl = utils.createAndAppend('#todoBox', 'div', 'id', `tlMainBox`);
         tl.setAttribute('data-id', list.id);
         const title = utils.createAndAppend(`#tlMainBox`, 'h3', 'class', 'todoTitle');
@@ -22,8 +23,15 @@ function domManip() {
         const desc = utils.createAndAppend('#tlMainBox', 'p', 'class', 'todoDesc');
         desc.textContent = `${list.taskDesc}`;
         utils.createAndAppend('#tlMainBox', 'div', 'id', 'todoCtr');
-        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks'); 
         for (const task of list.taskArray) {
+            if (task.dueDate === ) {
+
+            } else {
+                const date = utils.createAndAppend('#todoCtr', 'h4', 'id', `date-${task.dueDate}`);
+                date.textContent = ``
+            }
+        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks'); 
+        
             let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
             const radio = document.createElement('input');
