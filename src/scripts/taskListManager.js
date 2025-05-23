@@ -10,7 +10,7 @@ class TaskListManager {
     createTaskList(title, taskDesc) {
         const newList = new TaskList(title, taskDesc);
         this.taskLists.push(newList);
-        this.page.addTaskListToPage(newList);
+        this.page.addTaskListToSb(newList);
         return newList;
     }
 
@@ -22,6 +22,16 @@ class TaskListManager {
         }
         return null;
     }
+
+    moveTaskListToMB(id) {
+        const targetList = this.taskLists.find(list => list.id === id);
+        if (targetList) {
+            this.page.addTaskListToMainBox(targetList);
+        }
+        return null;
+    }
+
+  
 
     getAllLists() {
         return this.taskLists;
