@@ -2,7 +2,7 @@ class Dom {
 
     findElement = (selector) => document.querySelector(selector);
     findAllElements = (selector) => document.querySelectorAll(selector);
-    findElementByOther = (searchFor) => {
+    findElementByAttr = (searchFor) => {
         let el = document.querySelector(searchFor);
         return el
     }

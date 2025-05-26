@@ -1,11 +1,11 @@
-import {Dom} from './utils.js'
+import { Dom } from './utils.js'
 
 const utils = new Dom();
 
 
 function domManip() {
 
-    
+
     const addTaskListToSb = (list) => {
         utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${list.id}`);
         let sbTaskList = utils.createAndAppend(`.task-${list.id}`, 'h3', 'class', 'sbTaskTitle');
@@ -24,29 +24,31 @@ function domManip() {
         desc.textContent = `${list.taskDesc}`;
         utils.createAndAppend('#tlMainBox', 'div', 'id', 'todoCtr');
         for (const task of list.taskArray) {
-            if (task.dueDate === ) {
+            const existingDateHeader = utils.findElementByAttr(`[data-id="${task.dueDate}"]`);
 
-            } else {
+            if (!existingDateHeader) {
                 const date = utils.createAndAppend('#todoCtr', 'h4', 'id', `date-${task.dueDate}`);
-                date.textContent = ``
+                date.setAttribute('data-id', task.dueDate);
+                date.textContent = task.dueDate;
             }
-        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks'); 
-        
-            let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
-            mbTask.setAttribute('data-id', task.id);
-            const radio = document.createElement('input');
-            radio.setAttribute('type', 'radio');
-            mbTask.appendChild(radio);
-            mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
         }
-        console.log('Added to Main Box:', tl);
+        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks');
+
+        let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
+        mbTask.setAttribute('data-id', task.id);
+        const radio = document.createElement('input');
+        radio.setAttribute('type', 'radio');
+        mbTask.appendChild(radio);
+        mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
     }
-        return {addTaskListToSb, addTaskListToMainBox}
+    return { addTaskListToSb, addTaskListToMainBox }
+}
+
     
         
- }
-
-    
+ 
 
 
-export {domManip};
+
+
+export { domManip };

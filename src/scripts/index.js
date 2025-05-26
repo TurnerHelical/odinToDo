@@ -9,10 +9,13 @@ window.manager = manager;
 const maip = domManip();
 window.maip = maip;
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-});
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const list = manager.createTaskList('test', 'testing');
+    manager.createTask('test', '12-02', list.id);  // use correct ID
+    manager.moveTaskListToMB(list.id);            // use correct ID
+});
 
 
 
