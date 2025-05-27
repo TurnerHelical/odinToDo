@@ -30,16 +30,38 @@ function domManip() {
                 const date = utils.createAndAppend('#todoCtr', 'h4', 'id', `date-${task.dueDate}`);
                 date.setAttribute('data-id', task.dueDate);
                 date.textContent = task.dueDate;
+                addTaskToMB(task);
+            } else {
+                addTaskToMB(task);
             }
-        }
-        utils.createAndAppend('#todoCtr', 'ul', 'id', 'tasks');
+               
 
-        let mbTask = utils.createAndAppend('#tasks', 'li', 'class', 'task');
-        mbTask.setAttribute('data-id', task.id);
-        const radio = document.createElement('input');
-        radio.setAttribute('type', 'radio');
-        mbTask.appendChild(radio);
-        mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
+            
+        }
+   
+    }
+
+    const addTaskToMB = (task) => {
+
+        const existingUL = utils.findElement(`#ul-${task.dueDate}`);
+        if (!existingUL) {
+            const dateUl = utils.createAndAppend(`#date-${task.dueDate}`, 'ul', 'id', `ul-${task.dueDate}`);
+            utils.toggleClass(`#ul-${task.dueDate}`, 'tasks');
+            let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
+            mbTask.setAttribute('data-id', task.id);
+            const radio = document.createElement('input');
+            radio.setAttribute('type', 'radio');
+            mbTask.appendChild(radio);
+            mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
+    
+        } else  {
+            let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
+            mbTask.setAttribute('data-id', task.id);
+            const radio = document.createElement('input');
+            radio.setAttribute('type', 'radio');
+            mbTask.appendChild(radio);
+            mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
+        }
     }
     return { addTaskListToSb, addTaskListToMainBox }
 }
