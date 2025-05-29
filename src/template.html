@@ -26,20 +26,6 @@
         <section>
             <div id="todoBox">
                 <h2>Todo's</h2>
-                <!-- <div id="tlMainBox">
-                    <h3 class="todoTitle">Title</h3>
-                    <p class="todoDesc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi optio, vitae
-                        quaerat assumenda unde tenetur magnam quam quae magni fugiat eaque vel nobis, esse nemo
-                        aspernatur deserunt officia accusamus sunt.</p>
-                    <div id="todoCtr">
-                        <ul id="tasks">
-                            <li class="task"><input type="radio">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Est, laudantium omnis vero nemo libero inventore fugit repudiandae error
-                                voluptatibus, distinctio, mollitia temporibus culpa dicta accusamus tenetur assumenda
-                                optio veniam reiciendis?</li>
-                        </ul>
-                    </div>
-                </div> -->
             </div>
                 <div id="todoLists">
                     <h2>Lists</h2>
@@ -48,14 +34,40 @@
                     </div>
                 </div>
 
-                <div id="addList" class="disable modal">
+                <modal id="formContainer" class="">
+                    <div id="form">
+                        <!-- <h2>Add ToDo List</h2>
 
-                </div>
+                        <div>
+                            <label for="tasklistName" class="textlabel">Name for the Todo list: </label>
+                            <input type="text" name="tasklistName" id="tasklistName">
+                        </div>
 
-                <div id="addTodo" class="disable modal">
+                        <div>
+                            <label for="taskDesc" class="textlabel">Description for this Todo List: </label>
+                            <textarea name="taskDesc" id="taskDesc" rows="4" cols="50"></textarea>
+                        </div>
 
-                </div>
+                        <button id="tasklistSubmit">Submit</button> -->
+                        <h2>Add ToDo List task</h2>
 
+                        <div>
+                            <label for="taskInfo" class="textlabel">Details of the task: </label>
+                            <textarea name="taskInfo" id="taskInfo" rows="4" cols="50"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="taskDueDate" class="textlabel">Due Date: </label>
+                            <input type="date" name="taskDueDate" id="taskDueDate">
+                        </div>
+
+                        <div id="modalButtons">
+                            <button>Submit</button>
+                            <button>Cancel</button>
+                        </div>
+
+                    </div>
+                </modal>
 
         </section>
     </main>
