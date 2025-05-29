@@ -14,11 +14,19 @@ nav ul {
     padding: 0 30%;
 }
 
+#mainButtonCtr {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 section {
     display: grid;
     grid-template: 1fr / 3fr 1fr;
-    margin-top: 100px;
     min-height: 500px;
+    margin-top: 20px;
     padding: 0px 10px;
     gap: 10px;
 }

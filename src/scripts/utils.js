@@ -18,7 +18,6 @@ class Dom {
     clearContent = (selector) => {
         let el = this.findElement(selector);
         el.innerHTML = '';
-        console.log('test')
     }
     editAttr = (selector, attr, attrVal) => {
         let el = this.findElement(selector);

@@ -1,6 +1,7 @@
 import { Dom } from './utils.js'
-
+import { TaskListManager } from './taskListManager.js';
 const utils = new Dom();
+const manager = new TaskListManager;
 
 
 function domManip() {
@@ -34,11 +35,11 @@ function domManip() {
             } else {
                 addTaskToMB(task);
             }
-               
 
-            
+
+
         }
-   
+
     }
 
     const addTaskToMB = (task) => {
@@ -53,8 +54,8 @@ function domManip() {
             radio.setAttribute('type', 'radio');
             mbTask.appendChild(radio);
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
-    
-        } else  {
+
+        } else {
             let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
             const radio = document.createElement('input');
@@ -63,12 +64,54 @@ function domManip() {
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
         }
     }
-    return { addTaskListToSb, addTaskListToMainBox }
+
+    const listModal = () => {
+
+        utils.clearContent('#form');
+        utils.toggleClass('#formContainer', 'disable');
+        const formInfo = `
+                    <h2>Add ToDo List</h2>
+
+                        <div>
+                            <label for="tasklistName" class="textlabel">Name for the Todo list: </label>
+                            <input type="text" name="tasklistName" id="tasklistName">
+                        </div>
+
+                        <div>
+                            <label for="taskDesc" class="textlabel">Description for this Todo List: </label>
+                            <textarea name="taskDesc" id="taskDesc" rows="4" cols="50"></textarea>
+                        </div>
+
+                        <button id="tasklistSubmit">Submit</button>`;
+        utils.findElement('#form').innerHTML = formInfo;
+        const submitBtn = utils.findElement('#tasklistSubmit');
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            let title = utils.findElement('#tasklistName').value;
+            let desc = utils.findElement('#taskDesc').value;
+            manager.createTaskList(title, desc);
+            utils.toggleClass('#formContainer', 'disable');
+        });
+    }
+
+    const createListButton = () => {
+
+        const listBtn = utils.findElement('#createList');
+        listBtn.addEventListener('click', listModal);
+    }
+
+    const addTaskButton = () => {
+
+        const taskBtn = utils.findElement('#createList');
+        taskBtn.addEventListener('click', taskModal());
+
+    }
+    return { addTaskListToSb, addTaskListToMainBox, createListButton, addTaskButton }
 }
 
-    
-        
- 
+
+
+
 
 
 

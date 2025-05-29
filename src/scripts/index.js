@@ -6,17 +6,12 @@ import {TaskListManager} from './taskListManager.js';
 const manager = new TaskListManager();
 window.manager = manager;
 
-const maip = domManip();
-window.maip = maip;
+const manip = domManip();
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const list = manager.createTaskList('test', 'testing');
-    manager.createTask('test this is a test of the tasks adding to the main page', '12-02', list.id);
-    manager.createTask('test this is a test of the tasks adding to the main page', '12-02', list.id);
-    manager.createTask('test this is a test of the tasks adding to the main page', '12-04', list.id);
-    manager.moveTaskListToMB(list.id);            // use correct ID
+    manip.createListButton();
 });
 
 
