@@ -4,6 +4,7 @@ import { domManip } from './pageLoad.js';
 import {TaskListManager} from './taskListManager.js';
 
 const manager = new TaskListManager();
+manager.loadFromLocalStorage();
 window.manager = manager;
 
 const manip = domManip();

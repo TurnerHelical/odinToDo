@@ -120,6 +120,11 @@ textarea {
     padding: 5px 10px;
 }
 
+.task:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+
 .finishedTask {
     background-color: grey;
     text-decoration: line-through;

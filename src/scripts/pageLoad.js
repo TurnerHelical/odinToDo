@@ -36,16 +36,18 @@ function domManip() {
             if (!clickedTask) return;
         
             const taskId = clickedTask.getAttribute('data-id');
-            const targetTask = list.taskArray.find(t => t.id === taskId); // find task by id
+            const targetTask = list.taskArray.find(t => t.id === taskId);
         
             if (!targetTask) return;
         
             if (clickedTask.classList.contains('finishedTask')) {
                 clickedTask.classList.remove('finishedTask');
                 targetTask.finished = false;
+                manager.saveToLocalStorage();
             } else {
                 clickedTask.classList.add('finishedTask');
                 targetTask.finished = true;
+                manager.saveToLocalStorage();
             }
         });
         for (const task of sortedTasks) {
