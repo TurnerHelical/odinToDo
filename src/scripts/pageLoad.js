@@ -30,6 +30,24 @@ function domManip() {
         const sortedTasks = [...list.taskArray].sort((a, b) => {
             return new Date(a.dueDate) - new Date(b.dueDate);
         });
+        const todoCtr = utils.findElement('#todoCtr');
+        todoCtr.addEventListener('click', (e) => {
+            let clickedTask = e.target.closest('.task');
+            if (!clickedTask) return;
+        
+            const taskId = clickedTask.getAttribute('data-id');
+            const targetTask = list.taskArray.find(t => t.id === taskId); // find task by id
+        
+            if (!targetTask) return;
+        
+            if (clickedTask.classList.contains('finishedTask')) {
+                clickedTask.classList.remove('finishedTask');
+                targetTask.finished = false;
+            } else {
+                clickedTask.classList.add('finishedTask');
+                targetTask.finished = true;
+            }
+        });
         for (const task of sortedTasks) {
             const existingDateHeader = utils.findElementByAttr(`[data-id="${task.dueDate}"]`);
 
@@ -62,7 +80,7 @@ function domManip() {
                 const id = targetList.getAttribute('data-id');
                 manager.moveTaskListToMB(id);
             }
-        });
+        })
     }
 
     const addTaskToMB = (task) => {
@@ -73,29 +91,19 @@ function domManip() {
             utils.toggleClass(`#ul-${task.dueDate}`, 'tasks');
             let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
-            const radio = document.createElement('input');
-            radio.setAttribute('type', 'checkbox');
-            mbTask.appendChild(radio);
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
 
         } else {
             let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
-            const radio = document.createElement('input');
-            radio.setAttribute('type', 'checkbox');
-            mbTask.appendChild(radio);
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
         }
-        const todoCtr = utils.findElement('#todoCtr');
-        todoCtr.addEventListener('click', (e) => {
-            let clickedTask = e.target.closest('.task') 
-            if (clickedTask.classList.contains('finishedTask')) {
-                clickedTask.classList.remove('finishedTask');
-                
-            } else if (!clickedTask.classList.contains('finishedTask') && clickedTask.classList.contains('task')) {
-                clickedTask.classList.add('finishedTask');
-            }
-    })};
+        
+        if (task.finished === true) {
+            const li = utils.findElement(`[data-id='${task.id}']`);
+            li.classList.add('finishedTask');
+        }
+    }
 
     const listModal = () => {
 
