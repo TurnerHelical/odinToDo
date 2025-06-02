@@ -24,8 +24,9 @@ class Task {
     constructor(taskInfo, dueDate, taskListId) {
         this.taskInfo = taskInfo;
         this.dueDate = dueDate;
-        this.taskListId = taskListId
+        this.taskListId = taskListId;
         this.id = crypto.randomUUID();
+        this.finished = false;
     }
 
 

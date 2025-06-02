@@ -13,6 +13,7 @@ const manip = domManip();
 document.addEventListener('DOMContentLoaded', () => {
     manip.createListButton();
     manip.addTaskButton();
+    manip.clickableSb();
 });
 
 

@@ -8,11 +8,12 @@ function domManip() {
 
 
     const addTaskListToSb = (list) => {
-        utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${list.id}`);
-        let sbTaskList = utils.createAndAppend(`.task-${list.id}`, 'h3', 'class', 'sbTaskTitle');
-        sbTaskList.innerHTML = `${list.title}`;
+        const sbTaskList = utils.createAndAppend('#listCtr', 'div', 'class', `taskList task-${list.id}`);
+        let sbTaskListTitle = utils.createAndAppend(`.task-${list.id}`, 'h3', 'class', 'sbTaskTitle');
+        sbTaskListTitle.innerHTML = `${list.title}`;
         let sbTaskDesc = utils.createAndAppend(`.task-${list.id}`, 'p', 'class', 'sbTaskDesc');
         sbTaskDesc.innerHTML = `${list.taskDesc}`;
+        sbTaskList.setAttribute('data-id', `${list.id}`);
     }
 
     const addTaskListToMainBox = (list) => {
@@ -53,6 +54,17 @@ function domManip() {
 
     }
 
+    const clickableSb = () => {
+        const listCtr = utils.findElement('#listCtr');
+        listCtr.addEventListener('click', function(e) {
+            const targetList = e.target.closest('.taskList');
+            if (targetList.classList.contains('taskList')) {
+                const id = targetList.getAttribute('data-id');
+                manager.moveTaskListToMB(id);
+            }
+        });
+    }
+
     const addTaskToMB = (task) => {
 
         const existingUL = utils.findElement(`#ul-${task.dueDate}`);
@@ -62,7 +74,7 @@ function domManip() {
             let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
             const radio = document.createElement('input');
-            radio.setAttribute('type', 'radio');
+            radio.setAttribute('type', 'checkbox');
             mbTask.appendChild(radio);
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
 
@@ -70,11 +82,20 @@ function domManip() {
             let mbTask = utils.createAndAppend(`#ul-${task.dueDate}`, 'li', 'class', 'task');
             mbTask.setAttribute('data-id', task.id);
             const radio = document.createElement('input');
-            radio.setAttribute('type', 'radio');
+            radio.setAttribute('type', 'checkbox');
             mbTask.appendChild(radio);
             mbTask.appendChild(document.createTextNode(` ${task.taskInfo}`));
         }
-    }
+        const todoCtr = utils.findElement('#todoCtr');
+        todoCtr.addEventListener('click', (e) => {
+            let clickedTask = e.target.closest('.task') 
+            if (clickedTask.classList.contains('finishedTask')) {
+                clickedTask.classList.remove('finishedTask');
+                
+            } else if (!clickedTask.classList.contains('finishedTask') && clickedTask.classList.contains('task')) {
+                clickedTask.classList.add('finishedTask');
+            }
+    })};
 
     const listModal = () => {
 
@@ -166,7 +187,7 @@ function domManip() {
         taskBtn.addEventListener('click', taskModal);
 
     }
-    return { addTaskListToSb, addTaskListToMainBox, createListButton, addTaskButton }
+    return { addTaskListToSb, addTaskListToMainBox, createListButton, addTaskButton, clickableSb }
 }
 
 
